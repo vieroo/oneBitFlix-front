@@ -8,7 +8,7 @@ interface props {
   course: CourseType[]
 }
 
-const slideComponent = ({ course }: props) => {
+const SlideComponent = ({ course }: props) => {
   return (
     <>
       <div>
@@ -29,4 +29,4 @@ const slideComponent = ({ course }: props) => {
   )
 }
 
-export default slideComponent
+export default SlideComponent
