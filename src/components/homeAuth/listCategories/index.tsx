@@ -15,13 +15,13 @@ const ListCategories = () => {
 
   return (
     <>
-      { data.data.categories?.map((category: CategoryType ) => (
+      {data.data.categories?.map((category: CategoryType) => (
         <ListCategoriesSlide
           key={category.id}
           categoryId={category.id}
           categoryName={category.name}
         />
-      )) }
+		))}
     </>
   )
 }

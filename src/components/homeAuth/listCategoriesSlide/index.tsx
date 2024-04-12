@@ -24,8 +24,8 @@ const ListCategoriesSlide = ({ categoryId, categoryName }: props) => {
 
   return (
     <>
-      <SlideComponent course={data.data.courses} />
       <p className={styles.titleCategory}>{categoryName}</p>
+      <SlideComponent course={data.data.courses} />
     </>
   )
 }
