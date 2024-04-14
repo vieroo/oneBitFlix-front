@@ -1,17 +1,20 @@
-import categoriesService, { CategoryType } from "@/src/services/categoriesService"
-import useSWR from "swr"
-import ListCategoriesSlide from "../listCategoriesSlide"
+import categoriesService, {
+  CategoryType,
+} from "@/src/services/categoriesService";
+import useSWR from "swr";
+import ListCategoriesSlide from "../listCategoriesSlide";
+import PageSpinner from "../../common/spinner";
 
 const ListCategories = () => {
-  const { data, error } = useSWR("/listCategories", categoriesService.getCategories)
+  const { data, error } = useSWR(
+    "/listCategories",
+    categoriesService.getCategories
+  );
 
-  if (error) return error
-  if (!data)
-      return (
-        <>
-          <p>Loading...</p>
-        </>
-      )
+  if (error) return error;
+  if (!data) {
+    return <PageSpinner />;
+  }
 
   return (
     <>
@@ -21,9 +24,9 @@ const ListCategories = () => {
           categoryId={category.id}
           categoryName={category.name}
         />
-		))}
+      ))}
     </>
-  )
-}
+  );
+};
 
-export default ListCategories
+export default ListCategories;
