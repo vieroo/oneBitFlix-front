@@ -1,12 +1,28 @@
-import Footer from "@/src/components/common/footer/Footer"
-import FavoriteCategory from "@/src/components/homeAuth/favoriteCategory"
-import FeaturedCategory from "@/src/components/homeAuth/featuredCategory"
-import FeaturedSection from "@/src/components/homeAuth/featuredSection"
-import ListCategories from "@/src/components/homeAuth/listCategories"
-import NewestCategory from "@/src/components/homeAuth/newestCategory"
-import Head from "next/head"
+import Footer from "@/src/components/common/footer/Footer";
+import PageSpinner from "@/src/components/common/spinner";
+import FavoriteCategory from "@/src/components/homeAuth/favoriteCategory";
+import FeaturedCategory from "@/src/components/homeAuth/featuredCategory";
+import FeaturedSection from "@/src/components/homeAuth/featuredSection";
+import ListCategories from "@/src/components/homeAuth/listCategories";
+import NewestCategory from "@/src/components/homeAuth/newestCategory";
+import Head from "next/head";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 
 const HomeAuth = () => {
+  const router = useRouter();
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    if (!sessionStorage.getItem("onebitflix-token")) {
+      router.push("/login");
+    } else {
+      setLoading(false);
+    }
+  }, []);
+
+  if (loading) return <PageSpinner />;
+
   return (
     <>
       <Head>
@@ -22,7 +38,7 @@ const HomeAuth = () => {
         <Footer />
       </main>
     </>
-  )
-}
+  );
+};
 
-export default HomeAuth
+export default HomeAuth;
